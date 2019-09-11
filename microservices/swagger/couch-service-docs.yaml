@@ -22,6 +22,11 @@ paths:
             description: 'Fetch a product from the database'
             schema:
                 $ref: '#/definitions/Product'
+          default:
+            description: 'unexpected error'
+            schema:
+                $ref: '#/definitions/Error'
+
 # tags are used for organizing operations
 tags:
 - name: public
@@ -38,3 +43,14 @@ definitions:
       catagory: { type: string }
       quantity:
         type: number
+
+  Error:
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
